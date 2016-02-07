@@ -9,5 +9,5 @@ import {Hero} from '../../objects/hero'
   ]
 })
 export class HeroDetailComponent {
-  public hero: Hero
+  hero:Hero
 }
