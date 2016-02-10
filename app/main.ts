@@ -1,4 +1,22 @@
+//vendors
 import {bootstrap}    from 'angular2/platform/browser'
-import {HeroListComponent} from './components/hero-list/hero-list.component'
+import {ROUTER_PROVIDERS} from 'angular2/router';
 
-bootstrap(HeroListComponent);
+//helpers
+import {appInjector} from './helpers/app-injector'
+
+//components
+import {AppComponent} from './components/app.component'
+
+//servcies
+import {HeroService} from './services/hero.service'
+
+bootstrap(AppComponent, [
+  //angular providers
+  ROUTER_PROVIDERS,
+
+  //dev providers
+  HeroService
+]).then((app)=> {
+  appInjector(app.injector)
+});

@@ -9,7 +9,7 @@ System.register(['angular2/core', '../mocks/mock-heroes'], function(exports_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, mock_heroes_1;
-    var HeroService;
+    var _, HeroService;
     return {
         setters:[
             function (core_1_1) {
@@ -19,12 +19,31 @@ System.register(['angular2/core', '../mocks/mock-heroes'], function(exports_1) {
                 mock_heroes_1 = mock_heroes_1_1;
             }],
         execute: function() {
+            _ = require('lodash');
             HeroService = (function () {
                 function HeroService() {
+                    this._list = [];
                 }
-                HeroService.prototype.getHeroes = function () {
+                HeroService.prototype._updateListWithItem = function (item) {
+                    var existItemList = this._list.find(function (listItem) { return item.id == listItem.id; });
+                    if (existItemList)
+                        _.assign(existItemList, item);
+                    else
+                        this._list.push(item);
+                };
+                HeroService.prototype.loadHeroes = function () {
                     return new Promise(function (resolve) {
-                        return setTimeout(function () { return resolve(mock_heroes_1.HEROES); }, 500);
+                        return setTimeout(function () {
+                            resolve(mock_heroes_1.HEROES);
+                        }, 500);
+                    });
+                };
+                HeroService.prototype.loadHeroById = function (id) {
+                    return new Promise(function (resolve) {
+                        return setTimeout(function () {
+                            var hero = mock_heroes_1.HEROES.find(function (hero) { return hero.id == id; });
+                            resolve(hero);
+                        }, 500);
                     });
                 };
                 HeroService = __decorate([
