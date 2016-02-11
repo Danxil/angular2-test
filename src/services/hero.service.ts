@@ -1,7 +1,8 @@
 //vendors
 import {Injectable} from 'angular2/core'
-var _ = require('lodash');
 
+import _ = require('lodash')
+console.log(_)
 //objects
 import {Hero} from '../objects/hero'
 

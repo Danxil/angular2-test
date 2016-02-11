@@ -1,0 +1,47 @@
+{
+  "bases": {
+    "dist": "dist/",
+    "src": "src/"
+  },
+  "path": {
+    "scripts": [
+      "src/**/*.ts"
+    ],
+    "libs": [
+      "node_modules/systemjs/dist/system-polyfills.js",
+      "node_modules/systemjs/dist/system.src.js",
+      "node_modules/angular2/bundles/angular2-polyfills.js",
+      "node_modules/es6-shim/es6-shim.js",
+      "node_modules/rxjs/bundles/Rx.js",
+      "node_modules/angular2/bundles/angular2.dev.js",
+      "node_modules/angular2/bundles/router.dev.js"
+    ],
+    "sass": {
+      "src": [
+        "src/scss/app.scss"
+      ],
+      "watch": [
+        "src/scss/**/*.scss"
+      ],
+      "conf": {
+        "outputStyle": "nested"
+      }
+    },
+    "css_libs": [
+      "node_modules/bootstrap/dist/css/bootstrap.css"
+    ],
+    "fonts": [
+      "bower_components/font-awesome/fonts/*.*",
+      "bower_components/bootstrap/fonts/*.*"
+    ],
+    "html": [
+      "src/**/*.html"
+    ],
+    "images": [
+      "src/images/*.{png,gif,jpg,jpeg}"
+    ],
+    "copy": [
+      "src/assets/**/*"
+    ]
+  }
+}
