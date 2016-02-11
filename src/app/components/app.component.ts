@@ -1,10 +1,14 @@
+//variables
+declare var System: any
+
 //vendors
 import {Component} from 'angular2/core';
-import {RouteConfig, Route, ROUTER_DIRECTIVES} from 'angular2/router';
+import {SourceModule} from 'angular2/compiler';
+import {RouteConfig, Route, AsyncRoute, ROUTER_DIRECTIVES} from 'angular2/router';
 
 //components
-import {HeroesComponent} from './heroes/heroes.component'
 import {HeroComponent} from './hero/hero.component'
+import {HeroesComponent} from './heroes/heroes.component'
 
 //objects
 import {Hero} from '../objects/hero';
@@ -16,18 +20,20 @@ import {Hero} from '../objects/hero';
   providers: [],
 })
 @RouteConfig([
-  new Route({
+  new AsyncRoute({
     path: '/heroes',
     name: 'Heroes',
-    component: HeroesComponent,
+    loader: () => System.import('app/components/heroes/heroes.component')
+      .then((result: any)=> result.HeroesComponent),
   }),
-  new Route({
+  new AsyncRoute({
     path: '/hero/:id/...',
     name: 'Hero',
-    component: HeroComponent,
     data: {
       hero: <Hero>null
-    }
+    },
+    loader: () => System.import('app/components/hero/hero.component')
+      .then((result: any)=> result.HeroComponent),
   })
 ])
 export class AppComponent {

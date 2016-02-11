@@ -1,8 +1,10 @@
+//variables
+declare var _: any
+declare var _: any
+
 //vendors
 import {Injectable} from 'angular2/core'
 
-import _ = require('lodash')
-console.log(_)
 //objects
 import {Hero} from '../objects/hero'
 

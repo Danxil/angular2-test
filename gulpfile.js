@@ -4,6 +4,7 @@ var plug = require('gulp-load-plugins')();
 var del = require('del');
 
 var config = require('./gulpconfig.json');
+var tsOptions = require('./tsconfig.json').compilerOptions;
 
 gulp.task('default', [
   'dev',
@@ -65,14 +66,7 @@ gulp.task('js:dev', function () {
   return gulp.src(config.path.scripts)
     .pipe(plug.plumber())
     .pipe(plug.sourcemaps.init())
-    .pipe(plug.typescript({
-      target: 'es5',
-      noImplicitAny: true,
-      experimentalDecorators: true,
-      emitDecoratorMetadata: true,
-      module: 'system',
-      moduleResolution: 'node'
-    }))
+    .pipe(plug.typescript(tsOptions))
     .pipe(plug.sourcemaps.write('./'))
     .pipe(gulp.dest(config.bases.dist));
 });
