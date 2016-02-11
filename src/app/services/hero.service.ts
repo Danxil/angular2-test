@@ -22,7 +22,7 @@ export class HeroService {
       this._list.push(item);
   }
 
-  loadHeroes() {
+  getHeroes() {
     return new Promise<Hero[]>((resolve)=>
       setTimeout(()=>{
         this._list = HEROES
@@ -31,7 +31,7 @@ export class HeroService {
       }, 500)
     );
   }
-  loadHeroById(id: number) {
+  getHeroById(id: number) {
     return new Promise<Hero>((resolve)=>
       setTimeout(()=> {
         var hero = HEROES.find((hero)=> hero.id == id);

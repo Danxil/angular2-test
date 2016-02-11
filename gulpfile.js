@@ -73,7 +73,7 @@ gulp.task('js:dev', function () {
       module: 'system',
       moduleResolution: 'node'
     }))
-    .pipe(plug.sourcemaps.write('./maps'))
+    .pipe(plug.sourcemaps.write('./'))
     .pipe(gulp.dest(config.bases.dist));
 });
 
@@ -93,7 +93,7 @@ gulp.task('css:dev', function () {
     .pipe(plug.sourcemaps.init())
     .pipe(plug.plumber())
     .pipe(plug.sass(config.path.sass.conf))
-    .pipe(plug.sourcemaps.write('./maps'))
+    .pipe(plug.sourcemaps.write('./'))
     .pipe(gulp.dest(config.bases.dist + '/css'));
 });
 
@@ -121,15 +121,15 @@ gulp.task('vendor:js:dev', function () {
   return gulp.src(config.path.libs)
     .pipe(plug.sourcemaps.init())
     .pipe(plug.concat('vendor.js'))
-    .pipe(plug.sourcemaps.write('../maps'))
-    .pipe(gulp.dest(config.bases.dist + '/js'));
+    .pipe(plug.sourcemaps.write('./'))
+    .pipe(gulp.dest(config.bases.dist + '/vendors/js'));
 });
 
 gulp.task('vendor:js:prod', function () {
   return gulp.src(config.path.libs)
     .pipe(plug.concat('app.vendor.js'))
     .pipe(plug.uglify())
-    .pipe(gulp.dest(config.bases.dist + '/js'));
+    .pipe(gulp.dest(config.bases.dist + '/vendors/js'));
 });
 
 gulp.task('vendor:js:watch', function () {
@@ -139,15 +139,15 @@ gulp.task('vendor:js:watch', function () {
 gulp.task('vendor:css:prod', function () {
   return gulp.src(config.path.css_libs)
     .pipe(plug.concat('app.vendor.css'))
-    .pipe(gulp.dest(config.bases.dist + '/css'));
+    .pipe(gulp.dest(config.bases.dist + '/vendors/css'));
 });
 
 gulp.task('vendor:css:dev', function () {
   return gulp.src(config.path.css_libs)
     .pipe(plug.sourcemaps.init())
     .pipe(plug.concat('vendor.css'))
-    .pipe(plug.sourcemaps.write('../maps'))
-    .pipe(gulp.dest(config.bases.dist + '/css'));
+    .pipe(plug.sourcemaps.write('./'))
+    .pipe(gulp.dest(config.bases.dist + '/vendors/css'));
 });
 
 gulp.task('vendor:css:watch', function () {
@@ -173,9 +173,9 @@ gulp.task('images:prod', function () {
 });
 
 gulp.task('webserver', function () {
-  return gulp.src('./')
+  return gulp.src(config.bases.dist)
     .pipe(plug.webserver({
-      fallback: 'dist/index.html',
+      fallback: 'index.html',
       livereload: true,
       port: 9999
     }));
