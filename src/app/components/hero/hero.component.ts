@@ -1,10 +1,14 @@
 //vendors
-import {Component, OnInit, Injector} from 'angular2/core';
-import {ComponentInstruction} from 'angular2/router';
 import {
+  Component,
+  OnInit,
+  Injector
+} from 'angular2/core';
+
+import {
+  ComponentInstruction,
   RouteParams,
   RouteConfig,
-  RouteData,
   Route,
   CanActivate,
   OnActivate,
@@ -39,22 +43,20 @@ import {HeroService} from '../../services/hero.service';
   var heroService = appInjector().get(HeroService)
 
   var promises = [
-    heroService.getHeroById(next.params.id)
-      .then((result: Hero)=> {
-        return next.routeData.data.hero = <Hero>result
-      })
+    heroService.getHeroById(next.params.heroId)
   ]
 
   return Promise.all(promises).then()
 })
 export class HeroComponent implements OnActivate {
   constructor(
-    private _routeData: RouteData
+    private _heroService: HeroService,
+    private _routeParams: RouteParams
   ) {}
 
   hero:Hero
 
   routerOnActivate(next: ComponentInstruction) {
-    this.hero = this._routeData.get('hero')
+    this.hero = this._heroService.getHeroByIdFromCache(parseInt(this._routeParams.get('heroId')))
   }
 }

@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "lite": "lite-server",
-    "start": "concurrent \"npm run tsc:w\" \"npm run lite\" "
+    "start": "node_modules/gulp/bin/gulp.js",
+    "install": "tsd install"
   },
   "license": "ISC",
   "dependencies": {

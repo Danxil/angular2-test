@@ -1,7 +1,3 @@
-//variables
-declare var _: any
-declare var _: any
-
 //vendors
 import {Injectable} from 'angular2/core'
 
@@ -27,19 +23,23 @@ export class HeroService {
   getHeroes() {
     return new Promise<Hero[]>((resolve)=>
       setTimeout(()=>{
-        this._list = HEROES
-
-        resolve(HEROES)
+        resolve(this._list = HEROES)
       }, 500)
     );
   }
   getHeroById(id: number) {
-    return new Promise<Hero>((resolve)=>
+    return new Promise<Hero>(resolve=>
       setTimeout(()=> {
         var hero = HEROES.find((hero)=> hero.id == id);
+
+        this._updateListWithItem(hero)
 
         resolve(hero);
       }, 500)
     );
   }
+
+  getHeroByIdFromCache(id: number) {
+    return this._list.find((hero)=> hero.id == id)
+  };
 }
