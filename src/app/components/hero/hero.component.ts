@@ -43,7 +43,7 @@ import {HeroService} from '../../services/hero.service';
   var heroService = appInjector().get(HeroService)
 
   var promises = [
-    heroService.getHeroById(next.params.heroId)
+    heroService.getHeroById(next.params['heroId'])
   ]
 
   return Promise.all(promises).then()

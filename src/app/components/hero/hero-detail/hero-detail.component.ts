@@ -5,6 +5,9 @@ import {
   ComponentInstruction
 } from 'angular2/router';
 
+//components
+import {HeroComponent} from '../hero.component'
+
 //objects
 import {Hero} from '../../../objects/hero';
 
@@ -26,8 +29,8 @@ export class HeroDetailComponent {
   hero:Hero
 
   routerOnActivate(next: ComponentInstruction) {
-    console.log(this._injector)
-    var heroRouteParams = this._injector.parent.parent.get(RouteParams)
-    this.hero = this._heroService.getHeroByIdFromCache(parseInt(heroRouteParams.get('heroId')))
+    var heroComponent = this._injector.get(HeroComponent);
+
+    this.hero = heroComponent.hero
   }
 }
