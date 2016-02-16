@@ -19,11 +19,10 @@ export class HeroesComponent implements OnInit {
 
   title = 'Tour of herose';
   heroes: Hero[];
-  selectedHero:Hero;
 
   getHeroes() {
-    this._heroService.getHeroes().then(result =>
-      this.heroes = result
+    this._heroService.getHeroes().then(heroes =>
+      this.heroes = heroes
     );
   }
 

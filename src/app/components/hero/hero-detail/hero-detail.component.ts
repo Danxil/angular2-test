@@ -1,5 +1,10 @@
 //vendors
-import {Component, OnInit, Injector} from 'angular2/core';
+import {
+  Component,
+  OnInit,
+  Injector
+} from 'angular2/core';
+
 import {
   RouteParams,
   ComponentInstruction
@@ -26,7 +31,7 @@ export class HeroDetailComponent {
     private _injector: Injector
   ) {}
 
-  hero:Hero
+  hero:Hero;
 
   routerOnActivate(next: ComponentInstruction) {
     var heroComponent = this._injector.get(HeroComponent);

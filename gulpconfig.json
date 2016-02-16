@@ -43,7 +43,7 @@
       "src/images/*.{png,gif,jpg,jpeg}"
     ],
     "copy": [
-      "src/assets/**/*"
+      "src/**/*.json"
     ]
   }
 }
