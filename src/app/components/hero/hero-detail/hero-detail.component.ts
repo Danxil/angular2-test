@@ -17,7 +17,7 @@ import {HeroComponent} from '../hero.component'
 import {Hero} from '../../../objects/hero';
 
 //services
-import {HeroService} from '../../../services/hero.service';
+import {HeroesService} from '../../../services/heroes.service';
 
 @Component({
   templateUrl: '/app/components/hero/hero-detail/hero-detail.component.html',
@@ -27,7 +27,7 @@ import {HeroService} from '../../../services/hero.service';
 })
 export class HeroDetailComponent {
   constructor(
-    private _heroService: HeroService,
+    private _heroesService: HeroesService,
     private _injector: Injector
   ) {}
 

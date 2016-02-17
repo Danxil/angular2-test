@@ -13,7 +13,7 @@ import {Hero} from '../objects/hero'
 import {toPromise} from "rxjs/operator/toPromise";
 
 @Injectable()
-export class HeroService {
+export class HeroesService {
   constructor(
     private http:Http
   ) {}

@@ -1,8 +1,15 @@
 <h3>Hero detail</h3>
 <div *ngIf="hero">
-  <div><label>id: </label>{{hero.id}}</div>
   <div>
-      <label>name: </label>
-      <input [(ngModel)]="hero.name" placeholder="name"/>
+      <label>ID: </label> {{hero.id}}
+  </div>
+  <div>
+      <label>Name: </label>
+      <a href="javascript:void(0)" id="heroname">{{hero.name}}</a>
   </div>
 </div>
+<script>
+    $('#heroname').editable({
+        url: '/post',
+    });
+</script>

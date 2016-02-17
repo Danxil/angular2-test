@@ -16,7 +16,10 @@
       "node_modules/angular2/bundles/angular2.dev.js",
       "node_modules/angular2/bundles/router.dev.js",
       "node_modules/angular2/bundles/http.dev.js",
-      "node_modules/lodash/lodash.js"
+      "node_modules/lodash/lodash.js",
+      "node_modules/jquery/dist/jquery.js",
+      "node_modules/bootstrap/dist/js/bootstrap.js",
+      "node_modules/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.js"
     ],
     "sass": {
       "src": [
@@ -30,11 +33,12 @@
       }
     },
     "css_libs": [
-      "node_modules/bootstrap/dist/css/bootstrap.css"
+      "node_modules/bootstrap/dist/css/bootstrap.css",
+      "node_modules/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css"
     ],
     "fonts": [
       "bower_components/font-awesome/fonts/*.*",
-      "bower_components/bootstrap/fonts/*.*"
+      "node_modules/bootstrap/dist/fonts/*.*"
     ],
     "html": [
       "src/**/*.html"

@@ -55,7 +55,7 @@ gulp.task('copy', function () {
 
 gulp.task('fonts', function () {
   return gulp.src(config.path.fonts, {read: true})
-    .pipe(gulp.dest(config.bases.dist + '/fonts'));
+    .pipe(gulp.dest(config.bases.dist + '/vendors/fonts'));
 });
 
 gulp.task('copy:watch', function () {

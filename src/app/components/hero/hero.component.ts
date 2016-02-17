@@ -25,7 +25,7 @@ import {HeroDetailComponent} from './hero-detail/hero-detail.component'
 import {Hero} from '../../objects/hero';
 
 //services
-import {HeroService} from '../../services/hero.service';
+import {HeroesService} from '../../services/heroes.service';
 
 @Component({
   templateUrl: '/app/components/hero/hero.component.html',
@@ -36,11 +36,11 @@ import {HeroService} from '../../services/hero.service';
     path: '/hero-detail',
     name: 'HeroDetail',
     component: HeroDetailComponent,
-    useAsDefault: true,
+    useAsDefault: true
   })
 ])
 @CanActivate((next)=> {
-  var heroService = appInjector().get(HeroService)
+  var heroService = appInjector().get(HeroesService)
 
   var promises = [
     heroService.getHeroById(next.params['heroId'])
@@ -50,13 +50,13 @@ import {HeroService} from '../../services/hero.service';
 })
 export class HeroComponent implements OnActivate {
   constructor(
-    private _heroService: HeroService,
+    private _heroesService: HeroesService,
     private _routeParams: RouteParams
   ) {}
 
   hero:Hero
 
   routerOnActivate(next: ComponentInstruction) {
-    this.hero = this._heroService.getHeroByIdFromCache(parseInt(this._routeParams.get('heroId')))
+    this.hero = this._heroesService.getHeroByIdFromCache(parseInt(this._routeParams.get('heroId')))
   }
 }

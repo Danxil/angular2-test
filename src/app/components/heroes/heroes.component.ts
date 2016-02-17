@@ -3,7 +3,7 @@ import {Component, OnInit, Inject, Injector} from 'angular2/core';
 import {RouteConfig, Route, ROUTER_DIRECTIVES} from 'angular2/router';
 
 //servcies
-import {HeroService} from '../../services/hero.service'
+import {HeroesService} from '../../services/heroes.service'
 
 //objects
 import {Hero} from '../../objects/hero'
@@ -14,14 +14,13 @@ import {Hero} from '../../objects/hero'
 })
 export class HeroesComponent implements OnInit {
   constructor(
-    private _heroService: HeroService
+    private _heroesService: HeroesService
   ) {}
 
-  title = 'Tour of herose';
   heroes: Hero[];
 
   getHeroes() {
-    this._heroService.getHeroes().then(heroes =>
+    this._heroesService.getHeroes().then(heroes =>
       this.heroes = heroes
     );
   }

@@ -1,0 +1,21 @@
+{
+  "name": "angular2-quickstart",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Danxil <danxil@list.ru>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Danxil/angular2-test",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "3.0.0"
+  }
+}
