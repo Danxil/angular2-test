@@ -2,8 +2,10 @@ import {
   Directive,
   ElementRef,
   Input,
+  Output,
   Injector,
-  AfterContentInit
+  AfterContentInit,
+  EventEmitter
 } from 'angular2/core';
 
 @Directive({
@@ -16,27 +18,29 @@ import {
 export class XEditableDirective implements AfterContentInit{
   private _$elem
 
-  @Input('danxilXEditable') private _danxilXEditable: string
+  @Input() danxilXEditable: string
+  @Output() danxilXEditableChange: EventEmitter<string> = new EventEmitter()
 
   constructor(
-    private _elem: ElementRef,
-    private _injector: Injector
+    private _elem: ElementRef
   ) {
     this._$elem = $(_elem.nativeElement);
   }
 
   ngAfterContentInit() {
-    console.log(this._injector.parent)
-
     this._$elem.editable({
       url: '/post',
       success: (response, newVal)=> {
-        this._danxilXEditable = newVal
+        this.danxilXEditable = newVal
       }
     });
   }
 
   onMouseEnter() {
+    this.danxilXEditable = 'ololo11111'
+    this.danxilXEditableChange.next(this.danxilXEditable )
+
+    console.log(this.danxilXEditable )
     console.log('enter', arguments)
   }
 
