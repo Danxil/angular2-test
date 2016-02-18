@@ -13,21 +13,20 @@ import {
 //components
 import {HeroComponent} from '../hero.component'
 
+//directives
+import {XEditableDirective} from '../../../directives/x-editable.directive'
+
 //objects
 import {Hero} from '../../../objects/hero';
 
-//services
-import {HeroesService} from '../../../services/heroes.service';
-
 @Component({
   templateUrl: '/app/components/hero/hero-detail/hero-detail.component.html',
-  inputs: [
-    'hero'
-  ],
+  directives: [
+    XEditableDirective
+  ]
 })
 export class HeroDetailComponent {
   constructor(
-    private _heroesService: HeroesService,
     private _injector: Injector
   ) {}
 

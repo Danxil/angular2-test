@@ -1,16 +1,10 @@
 <h3>Hero detail</h3>
-<div *ngIf="hero">
+<div>
   <div>
       <label>ID: </label> {{hero.id}}
   </div>
   <div>
-      <label>Name: </label>
-      <a href="javascript:void(0)" id="heroname">{{hero.name}}</a>
+      <label>Name: {{hero.name}} </label>
+      <a href="javascript:void(0)" danxilXEditable="hero.name">{{hero.name}}</a>
   </div>
 </div>
-<script>
-    $('#heroname').editable({
-      url: '/post',
-      mode: 'inline'
-    });
-</script>

@@ -28,7 +28,9 @@ import {appInjector} from '../helpers/app-injector'
 @Component({
   selector: 'my-app',
   templateUrl: '/app/components/app.component.html',
-  directives: [ROUTER_DIRECTIVES],
+  directives: [
+    ROUTER_DIRECTIVES
+  ],
   providers: [
     HeroesService
   ],
