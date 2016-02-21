@@ -8,18 +8,18 @@ import {
   EventEmitter
 } from 'angular2/core';
 
+declare var window
+
 @Directive({
   selector: '[danxilXEditable]',
-  host: {
-    '(mouseenter)': 'onMouseEnter()',
-    '(mouseleave)': 'onMouseLeave()'
-  }
 })
-export class XEditableDirective implements AfterContentInit{
-  private _$elem
-
-  @Input() danxilXEditable: string
-  @Output() danxilXEditableChange: EventEmitter<string> = new EventEmitter()
+export class XEditableDirective implements AfterContentInit {
+  private _$elem;
+  @Input() name: string;
+  @Input() danxilXEditable: string;
+  @Output() danxilXEditableChange: EventEmitter<string> = new EventEmitter();
+  private _serverError;
+  private _clientError;
 
   constructor(
     private _elem: ElementRef
@@ -28,23 +28,16 @@ export class XEditableDirective implements AfterContentInit{
   }
 
   ngAfterContentInit() {
-    this._$elem.editable({
-      url: '/post',
+    console.log(this.name)
+    window.a = this._$elem.editable({
+      send: 'newer',
       success: (response, newVal)=> {
-        this.danxilXEditable = newVal
+        this.danxilXEditable = newVal;
+        this.danxilXEditableChange.next(this.danxilXEditable);
+      },
+      validate: ()=> {
+        return ['ololo', 'awdwa']
       }
     });
-  }
-
-  onMouseEnter() {
-    this.danxilXEditable = 'ololo11111'
-    this.danxilXEditableChange.next(this.danxilXEditable )
-
-    console.log(this.danxilXEditable )
-    console.log('enter', arguments)
-  }
-
-  onMouseLeave() {
-    console.log('leave', arguments)
   }
 }
