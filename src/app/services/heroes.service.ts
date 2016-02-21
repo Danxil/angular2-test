@@ -15,7 +15,7 @@ import {toPromise} from "rxjs/operator/toPromise";
 @Injectable()
 export class HeroesService {
   constructor(
-    private http:Http
+    private _http:Http
   ) {}
 
   private _heroesUrl = 'app/mocks/mock-heroes.json';
@@ -40,7 +40,7 @@ export class HeroesService {
   }
 
   getHeroes(): Promise<Hero[]> {
-    return this.http.get(this._heroesUrl)
+    return this._http.get(this._heroesUrl)
       .toPromise()
       .then((response):Hero[]=> {
         this._list = response.json().data
@@ -51,7 +51,7 @@ export class HeroesService {
   }
 
   getHeroById(id:number): Promise<Hero> {
-    return this.http.get(this._heroesUrl)
+    return this._http.get(this._heroesUrl)
       .toPromise()
       .then((response):Hero=> {
         var heroes:Hero[] = response.json().data
@@ -65,5 +65,5 @@ export class HeroesService {
 
   getHeroByIdFromCache(id:number):Hero {
     return this._list.find((hero:Hero)=> hero.id == id)
-  };
+  }
 }
