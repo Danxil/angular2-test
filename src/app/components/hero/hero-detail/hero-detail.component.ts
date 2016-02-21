@@ -1,13 +1,13 @@
 //vendors
 import {
-  Component,
-  OnInit,
-  Injector
+    Component,
+    OnInit,
+    Injector
 } from 'angular2/core';
 
 import {
-  RouteParams,
-  ComponentInstruction
+    RouteParams,
+    ComponentInstruction
 } from 'angular2/router';
 
 //components
@@ -20,21 +20,20 @@ import {XEditableDirective} from '../../../directives/x-editable.directive'
 import {Hero} from '../../../objects/hero';
 
 @Component({
-  templateUrl: '/app/components/hero/hero-detail/hero-detail.component.html',
-  directives: [
-    XEditableDirective
-  ]
+    templateUrl: '/app/components/hero/hero-detail/hero-detail.component.html',
+    directives: [
+        XEditableDirective
+    ]
 })
 export class HeroDetailComponent {
-  constructor(
-    private _injector: Injector
-  ) {}
+    constructor(private _injector:Injector) {
+    }
 
-  hero:Hero;
+    hero:Hero;
 
-  routerOnActivate(next: ComponentInstruction) {
-    var heroComponent = this._injector.get(HeroComponent);
+    routerOnActivate(next:ComponentInstruction) {
+        var heroComponent = this._injector.get(HeroComponent);
 
-    this.hero = heroComponent.hero
-  }
+        this.hero = heroComponent.hero
+    }
 }

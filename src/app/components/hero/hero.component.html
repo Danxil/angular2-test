@@ -1,4 +1,12 @@
-<div class="page-header">
+<div class="">
   <h1>Hero ID: {{hero.id}}</h1>
+  <ul class="nav nav-tabs">
+    <li [class.active]="router.isRouteActive(router.generate(['HeroDetail']))">
+      <a [routerLink]="['HeroDetail']">Detail</a>
+    </li>
+    <li [class.active]="router.isRouteActive(router.generate(['HeroPowers']))">
+      <a [routerLink]="['HeroPowers']">Powers</a>
+    </li>
+  </ul>
 </div>
 <router-outlet></router-outlet>

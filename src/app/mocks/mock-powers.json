@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Power 1"
+    },
+    {
+      "id": 2,
+      "name": "Power 2"
+    },
+    {
+      "id": 3,
+      "name": "Power 3"
+    },
+    {
+      "id": 4,
+      "name": "Power 4"
+    },
+    {
+      "id": 5,
+      "name": "Power 5"
+    }
+  ]
+}

@@ -34,7 +34,7 @@ export class XEditableDirective implements AfterContentInit {
     }
 
     private _submit(params) {
-        var defer = new $.Deferred()
+        var defer = $.Deferred()
 
         this._http.post(
             this.danxilXEditableOptions.url,

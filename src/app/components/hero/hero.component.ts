@@ -1,3 +1,6 @@
+//variables
+declare var System:any
+
 //vendors
 import {
   Component,
@@ -9,7 +12,8 @@ import {
   ComponentInstruction,
   RouteParams,
   RouteConfig,
-  Route,
+  AsyncRoute,
+  Router,
   CanActivate,
   OnActivate,
   ROUTER_DIRECTIVES
@@ -20,6 +24,7 @@ import {appInjector} from '../../helpers/app-injector'
 
 //components
 import {HeroDetailComponent} from './hero-detail/hero-detail.component'
+import {HeroPowersComponent} from './hero-powers/hero-powers.component'
 
 //objects
 import {Hero} from '../../objects/hero';
@@ -32,11 +37,18 @@ import {HeroesService} from '../../services/heroes.service';
   directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([
-  new Route({
+  new AsyncRoute({
     path: '/hero-detail',
     name: 'HeroDetail',
-    component: HeroDetailComponent,
+    loader: () => System.import('app/components/hero/hero-detail/hero-detail.component')
+        .then((result:any)=> result.HeroDetailComponent),
     useAsDefault: true
+  }),
+  new AsyncRoute({
+    path: '/hero-powers',
+    name: 'HeroPowers',
+    loader: () => System.import('app/components/hero/hero-powers/hero-powers.component')
+        .then((result:any)=> result.HeroPowersComponent),
   })
 ])
 @CanActivate((next)=> {
@@ -51,8 +63,10 @@ import {HeroesService} from '../../services/heroes.service';
 export class HeroComponent implements OnActivate {
   constructor(
     private _heroesService: HeroesService,
-    private _routeParams: RouteParams
-  ) {}
+    private _routeParams: RouteParams,
+    public router: Router
+  ) {
+  }
 
   hero:Hero
 
